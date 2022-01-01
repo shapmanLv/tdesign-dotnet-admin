@@ -2,9 +2,9 @@
 
 public class MenuRepository : IMenuRepository
 {
-    private readonly BackAdminCoreDbContext _context;
+    private readonly TDesignDotnetAdminDbContext _context;
     public DbContext Context => _context;
-    public MenuRepository(BackAdminCoreDbContext context) => _context = context;
+    public MenuRepository(TDesignDotnetAdminDbContext context) => _context = context;
 
     public async Task AddMenuAsync(Menu menu) => await _context.Menu.AddAsync(menu);
     public async Task AddMenuApiAsync(Menu menu) => await _context.MenuApi.AddRangeAsync(menu.MenuApis);

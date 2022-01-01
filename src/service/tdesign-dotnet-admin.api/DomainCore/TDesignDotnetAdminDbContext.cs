@@ -1,12 +1,12 @@
-﻿namespace TDesignDotentAdmin;
+﻿namespace TDesignDotentAdmin.DomainCore;
 
-public class BackAdminCoreDbContext : DbContext
+public class TDesignDotnetAdminDbContext : DbContext
 {
     private readonly IMediator _mediator;
-    public BackAdminCoreDbContext(DbContextOptions<BackAdminCoreDbContext> options)
+    public TDesignDotnetAdminDbContext(DbContextOptions<TDesignDotnetAdminDbContext> options)
      : base(options)
     { }
-    public BackAdminCoreDbContext(DbContextOptions<BackAdminCoreDbContext> options, IMediator mediator)
+    public TDesignDotnetAdminDbContext(DbContextOptions<TDesignDotnetAdminDbContext> options, IMediator mediator)
         : base(options)
         => _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator), "");
 

@@ -3,9 +3,9 @@
 /// <summary>
 /// automapper 配置
 /// </summary>
-public class BackAdminCoreAutoMapperProfile : Profile
+public class TDesignDotnetAdminAutoMapperProfile : Profile
 {
-    public BackAdminCoreAutoMapperProfile()
+    public TDesignDotnetAdminAutoMapperProfile()
     {
         CreateMap<AddMenuCommand, Menu>();
         CreateMap<UpdateMenuCommand, Menu>();

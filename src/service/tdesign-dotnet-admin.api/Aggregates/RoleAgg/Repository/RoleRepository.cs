@@ -2,9 +2,9 @@
 
 public class RoleRepository : IRoleRepository
 {
-    private readonly BackAdminCoreDbContext _context;
+    private readonly TDesignDotnetAdminDbContext _context;
     public DbContext Context => _context;
-    public RoleRepository(BackAdminCoreDbContext context) => _context = context;
+    public RoleRepository(TDesignDotnetAdminDbContext context) => _context = context;
 
     public async Task AddRoleAsync(Role role) => await _context.AddAsync(role);
     public async Task AddRoleMenuAndApiAsync(Role role)

@@ -2,9 +2,9 @@
 
 public class UserRepository : IUserRepository
 {
-    private readonly BackAdminCoreDbContext _context;
+    private readonly TDesignDotnetAdminDbContext _context;
     public DbContext Context => _context;
-    public UserRepository(BackAdminCoreDbContext context) => _context = context;
+    public UserRepository(TDesignDotnetAdminDbContext context) => _context = context;
 
     public async Task AddUserAsync(User user) => await _context.User.AddAsync(user);
     public async Task AddUserRoleAsync(User user) => await _context.UserRole.AddRangeAsync(user.UserRoles);

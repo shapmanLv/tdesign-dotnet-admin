@@ -2,9 +2,9 @@
 
 public class ApiRepository : IApiRepository
 {
-    private readonly BackAdminCoreDbContext _context;
+    private readonly TDesignDotnetAdminDbContext _context;
     public DbContext Context => _context;
-    public ApiRepository(BackAdminCoreDbContext context) => _context = context;
+    public ApiRepository(TDesignDotnetAdminDbContext context) => _context = context;
 
     public async Task AddAsync(Api api) => await _context.AddAsync(api);
     public void Update(Api api) => _context.Update(api);

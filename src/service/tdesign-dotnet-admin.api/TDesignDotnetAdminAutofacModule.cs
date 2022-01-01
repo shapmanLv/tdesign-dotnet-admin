@@ -3,7 +3,7 @@
 /// <summary>
 /// autofac module
 /// </summary>
-public class BackAdminCoreAutofacModule : Autofac.Module
+public class TDesignDotnetAdminAutofacModule : Autofac.Module
 {
     protected override void Load(ContainerBuilder builder)
     {

@@ -1,5 +1,6 @@
 ﻿global using Autofac;
 global using AutoMapper;
+global using System.Reflection;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;
 global using System;
@@ -22,6 +23,8 @@ global using TDesignDotentAdmin.Aggregates.ApiAgg.Command;
 global using TDesignDotentAdmin.Aggregates.ApiAgg.Repository;
 global using TDesignDotentAdmin.Aggregates.UserAgg;
 global using TDesignDotentAdmin.Aggregates.UserAgg.Command;
+global using TDesignDotentAdmin.Aggregates.UserAgg.Command.Validation;
 global using TDesignDotentAdmin.Aggregates.UserAgg.Event;
 global using TDesignDotentAdmin.Aggregates.UserAgg.Repository;
+global using TDesignDotentAdmin.DomainCore.Behaviors;
 global using TDesignDotentAdmin.Common.Extensions;
