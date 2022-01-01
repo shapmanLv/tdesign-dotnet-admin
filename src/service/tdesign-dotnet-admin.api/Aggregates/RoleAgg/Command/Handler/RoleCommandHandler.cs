@@ -21,10 +21,28 @@ public class RoleCommandHandler :
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    public Task<Unit> Handle(AddRoleCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(AddRoleCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var entity = _mapper.Map<Role>(request);
+        await _roleRepository.AddRoleAsync(entity);
+        using (var transaction = await _roleRepository.Context.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                await _roleRepository.Context.SaveChangesAsync();
+                entity.SetRoleMenus(request.Menus ?? new long[0]);
+                entity.SetRoleApis(request.Apis ?? new long[0]);
+                await _roleRepository.AddRoleMenuAndApiAsync(entity);
+                await _roleRepository.Context.SaveChangesAsync();
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+        return Unit.Value;
     }
     /// <summary>
     /// 修改
@@ -32,10 +50,14 @@ public class RoleCommandHandler :
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    public Task<Unit> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var entity = _mapper.Map<Role>(request);
+        entity.SetRoleApis(request.Apis ?? new long[0]);
+        entity.SetRoleMenus(request.Menus ?? new long[0]);
+        await _roleRepository.UpdateRoleAsync(entity);
+        await _roleRepository.Context.SaveChangesAsync(cancellationToken);
+        return Unit.Value;
     }
     /// <summary>
     /// 删除
@@ -43,9 +65,10 @@ public class RoleCommandHandler :
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    public Task<Unit> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        await _roleRepository.DeleteRoleAsync(request.Id);
+        await _roleRepository.Context.SaveChangesAsync();
+        return Unit.Value;
     }
 }
