@@ -2,6 +2,6 @@
 
 public class DeleteRoleCommand : IRequest
 {
-    public DeleteRoleCommand(long id) => Id = id;
-    public long Id { get; set; }
+    public DeleteRoleCommand(long roleId) => RoleId = roleId;
+    public long RoleId { get; set; }
 }

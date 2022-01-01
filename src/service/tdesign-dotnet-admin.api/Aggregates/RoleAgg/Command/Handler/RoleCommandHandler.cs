@@ -3,7 +3,8 @@
 public class RoleCommandHandler :
     IRequestHandler<AddRoleCommand>,
     IRequestHandler<UpdateRoleCommand>,
-    IRequestHandler<DeleteRoleCommand>
+    IRequestHandler<DeleteRoleCommand>,
+    IRequestHandler<BatchDeleteRoleCommand>
 {
     private readonly IMapper _mapper;
     private readonly IRoleRepository _roleRepository;
@@ -67,8 +68,21 @@ public class RoleCommandHandler :
     /// <returns></returns>
     public async Task<Unit> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
     {
-        await _roleRepository.DeleteRoleAsync(request.Id);
+        await _roleRepository.DeleteRoleAsync(request.RoleId);
         await _roleRepository.Context.SaveChangesAsync();
+        return Unit.Value;
+    }
+    /// <summary>
+    /// 批量删除
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<Unit> Handle(BatchDeleteRoleCommand request, CancellationToken cancellationToken)
+    {
+        for (int i = 0; i < request.RoleIds.Length; i++)
+            await _roleRepository.DeleteRoleAsync(request.RoleIds[i]);
+        await _roleRepository.Context.SaveChangesAsync(cancellationToken);
         return Unit.Value;
     }
 }
