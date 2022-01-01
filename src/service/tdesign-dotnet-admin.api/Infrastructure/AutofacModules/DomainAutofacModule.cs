@@ -1,4 +1,4 @@
-﻿namespace TDesignDotentAdmin.DomainCore;
+﻿namespace TDesignDotentAdmin.Infrastructure.AutofacModules;
 
 public class DomainAutofacModule : Autofac.Module
 {

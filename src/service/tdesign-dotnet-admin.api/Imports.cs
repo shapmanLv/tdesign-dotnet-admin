@@ -41,3 +41,4 @@ global using Microsoft.AspNetCore.Mvc;
 global using TDesignDotentAdmin.Infrastructure;
 global using TDesignDotentAdmin.Infrastructure.ViewModels;
 global using TDesignDotentAdmin.Queries;
+global using TDesignDotentAdmin.Infrastructure.AutofacModules;

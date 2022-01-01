@@ -18,5 +18,6 @@ public class AutoMapperProfile : Profile
         CreateMap<Menu, MenuDataTDesignTreeViewModel>()
             .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Id));
+        CreateMap<Menu, MenuWithApiTreeViewModel>();
     }
 }

@@ -47,7 +47,7 @@ builder.Services
         options.SerializerSettings.Converters.Add(new IsoDateTimeConverter() { DateTimeFormat = "yyyy/MM/dd HH:mm:ss" });
     });
 builder.Services.AddAutoMapper( // automapper
-    typeof(TDesignDotnetAdminAutoMapperProfile)
+    typeof(AutoMapperProfile)
     );
 builder.Services.AddDbContext<TDesignDotnetAdminDbContext>(options => // ef core
     options.UseMySql(ServerVersion.AutoDetect(configuration.GetConnectionString("AppDbConnStr")),
@@ -62,7 +62,7 @@ builder.Services.AddHttpContextAccessor(); // зЂВс httpcontext
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(container =>
 {
     container.RegisterModule<DomainAutofacModule>();
-    container.RegisterModule<TDesignDotnetAdminAutofacModule>();
+    container.RegisterModule<ApplicationAutofacModule>();
 }));
 #endregion
 

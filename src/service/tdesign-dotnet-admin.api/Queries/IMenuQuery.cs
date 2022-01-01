@@ -7,4 +7,9 @@ public interface IMenuQuery
     /// </summary>
     /// <returns></returns>
     Task<List<MenuDataTDesignTreeViewModel>?> GetMenuDataTDesignTreeAsync();
+    /// <summary>
+    /// 获取由菜单和接口数据组成的树
+    /// </summary>
+    /// <returns></returns>
+    Task<List<MenuWithApiTreeViewModel>?> GetMenuWithApiTreeAsync();
 }

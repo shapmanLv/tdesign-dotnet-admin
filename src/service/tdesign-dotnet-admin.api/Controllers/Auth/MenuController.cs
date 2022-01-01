@@ -58,5 +58,12 @@ public class MenuController : ControllerBase
     [Description("获取使用菜单数据制成的t-tree组件数据源")]
     public async Task<ApiRespond<List<MenuDataTDesignTreeViewModel>?>> GetMenuDataTDesignTree()
         => ApiRespond.SuccessResult(await _menuQuery.GetMenuDataTDesignTreeAsync());
-    public async Task<ApiRespond>
+    /// <summary>
+    /// 获取由菜单和接口数据组成的树
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet("getMenuWithApiTree")]
+    [Description("获取由菜单和接口数据组成的树")]
+    public async Task<ApiRespond<List<MenuWithApiTreeViewModel>?>> GetMenuWithApiTree()
+        => ApiRespond.SuccessResult(await _menuQuery.GetMenuWithApiTreeAsync());
 }
