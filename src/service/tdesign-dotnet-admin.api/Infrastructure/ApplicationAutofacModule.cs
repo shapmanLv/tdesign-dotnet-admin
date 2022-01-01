@@ -1,12 +1,11 @@
-﻿namespace TDesignDotentAdmin;
+﻿namespace TDesignDotentAdmin.Infrastructure;
 
 /// <summary>
 /// autofac module
 /// </summary>
-public class TDesignDotnetAdminAutofacModule : Autofac.Module
+public class ApplicationAutofacModule : Autofac.Module
 {
     protected override void Load(ContainerBuilder builder)
     {
-        
     }
 }

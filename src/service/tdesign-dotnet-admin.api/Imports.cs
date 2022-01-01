@@ -38,3 +38,6 @@ global using Newtonsoft.Json.Converters;
 global using TDesignDotentAdmin.Infrastructure.ApiRespondModel;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Mvc;
+global using TDesignDotentAdmin.Infrastructure;
+global using TDesignDotentAdmin.Infrastructure.ViewModels;
+global using TDesignDotentAdmin.Queries;

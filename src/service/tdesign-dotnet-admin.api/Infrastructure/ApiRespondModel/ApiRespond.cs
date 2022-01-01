@@ -53,6 +53,18 @@ public record ApiRespond
         result.Msg = "";
         return result;
     }
+    /// <summary>
+    /// 处理成功
+    /// </summary>
+    /// <returns></returns>
+    public static ApiRespond<T> SuccessResult<T>(T data)
+    {
+        var result = default(ApiRespond<T>);
+        result.Code = AppDomainStatusCodeDefine.Code.Success;
+        result.Msg = "";
+        result.Data = data;
+        return result;
+    }
 }
 
 public record ApiRespond<T> : ApiRespond
