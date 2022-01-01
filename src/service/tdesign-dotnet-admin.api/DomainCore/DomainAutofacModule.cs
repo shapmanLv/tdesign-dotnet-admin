@@ -25,10 +25,13 @@ public class DomainAutofacModule : Autofac.Module
             .AsImplementedInterfaces();
 
         // Register the Command's Validators (Validators based on FluentValidation library)
-        builder
-            .RegisterAssemblyTypes(typeof(AddUserCommandValidator).GetTypeInfo().Assembly)
+        builder.RegisterAssemblyTypes(typeof(AddUserCommandValidator).GetTypeInfo().Assembly)
             .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
             .AsImplementedInterfaces();
+
+        builder.RegisterAssemblyTypes(typeof(IUserRepository).GetTypeInfo().Assembly)
+             .Where(t => t.Name.EndsWith("Repository"))
+             .AsImplementedInterfaces();
 
         builder.RegisterGeneric(typeof(LoggingBehavior<,>)).As(typeof(IPipelineBehavior<,>));
         builder.RegisterGeneric(typeof(ValidatorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
