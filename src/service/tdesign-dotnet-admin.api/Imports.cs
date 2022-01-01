@@ -35,3 +35,6 @@ global using TDesignDotentAdmin.Common.Extensions;
 global using Newtonsoft;
 global using Newtonsoft.Json.Serialization;
 global using Newtonsoft.Json.Converters;
+global using TDesignDotentAdmin.Infrastructure.ApiRespondModel;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
